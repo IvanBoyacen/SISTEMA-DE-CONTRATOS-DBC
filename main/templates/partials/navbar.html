@@ -1,0 +1,16 @@
+{% load static %}
+
+<div class="navbar">
+  <div class="navbar-logo">
+    <a href="{% url 'principal' %}">
+      <img src="{% static 'img/logo.png' %}" alt="Logo" class="logo-img">
+    </a>
+  </div>
+  <div class="navbar-options">
+    <a href="{% url 'contratos' %}">Contratos</a>
+    <a href="#">Ayuda</a>
+    <a href="#">Salir</a>
+  </div>
+</div>
+
+

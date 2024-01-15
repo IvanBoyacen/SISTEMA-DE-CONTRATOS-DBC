@@ -1,0 +1,22 @@
+{% extends 'partials/body.html' %}
+{% load static %}
+
+{% block contenido %}
+
+  <title>EDITAR CONTRATO</title>
+
+  <div class="contenedor" id="contenedor-contrato">
+    <h2>EDITAR CONTRATO</h2>
+
+    <form method="post" action="{% url 'editar_contrato' contrato.id %}">
+      {% csrf_token %}
+      {{ form|crispy }}
+      <button type="submit" class="btn btn-primary">Guardar cambios</button>
+    </form>
+
+    <a href="{% url 'detalles_contrato' contrato.id %}">
+      <button class="boton-editar">Volver a detalles del contrato</button>
+    </a>
+
+  </div>
+{% endblock contenido %}

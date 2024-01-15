@@ -1,0 +1,151 @@
+{% extends 'partials/body.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block contenido %}
+
+  <title>CONTRATO</title>
+
+  <div class="contenedor" id="contenedor-contrato">
+    <h2>CONTRATO</h2>
+
+    <!-- DATOS DEL EMPLEADOR -->
+    <div class="subcontenedor">
+      <h3>DATOS DEL EMPLEADOR</h3>
+      <table>
+        <tbody>
+          <tr>
+            <th><label for="nombreEmpresa">Nombre de la empresa:</label></th>
+            <td><span id="nombreEmpresa">{{ contrato.nombre_empresa }}</span></td>
+          </tr>
+          <tr>
+            <th><label for="representante">Representante:</label></th>
+            <td><span id="representante">{{ contrato.representante }}</span></td>
+          </tr>
+          <tr>
+            <th><label for="cargo">Cargo:</label></th>
+            <td><span id="cargo">{{ contrato.cargo_empleador }}</span></td>
+          </tr>
+          <tr>
+            <th><label for="cc">CC:</label></th>
+            <td><span id="cc">{{ contrato.cc_empleador }}</span></td>
+          </tr>
+          <tr>
+            <th><label for="lugarExpedicion">Lugar de expedición CC:</label></th>
+            <td><span id="lugarExpedicion">{{ contrato.lugar_expedicion_cc_empleador }}</span></td>
+          </tr>
+          <tr>
+            <th><label for="celular">Celular:</label></th>
+            <td><span id="celular">{{ contrato.celular_empleador }}</span></td>
+          </tr>
+          <tr>
+            <th><label for="correoElectronico">Correo electrónico:</label></th>
+            <td><span id="correoElectronico">{{ contrato.correo_electronico_empleador }}</span></td>
+          </tr>
+          <tr>
+            <th><label for="direccionResidencia">Dirección de residencia:</label></th>
+            <td><span id="direccionResidencia">{{ contrato.direccion_residencia_empleador }}</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <br>
+    <!-- DATOS DEL EMPLEADO -->
+    <div class="subcontenedor">
+      <h3>DATOS DEL EMPLEADO</h3>
+      <table>
+        <tbody>
+          <tr>
+            <th><label for="nombreEmpleado">Empleado:</label></th>
+            <td><span id="nombreEmpleado">{{ contrato.nombre_empleado }}</span></td>
+          </tr>
+          <tr>
+            <th><label for="ccEmpleado">CC:</label></th>
+            <td><span id="ccEmpleado">{{ contrato.cc_empleado }}</span></td>
+          </tr>
+          <tr>
+            <th><label for="correoEmpleado">Correo electrónico:</label></th>
+            <td><span id="correoEmpleado">{{ contrato.correo_empleado }}</span></td>
+          </tr>
+          <tr>
+            <th><label for="celularEmpleado">Celular:</label></th>
+            <td><span id="celularEmpleado">{{ contrato.celular_empleado }}</span></td>
+          </tr>
+          <tr>
+            <th><label for="direccionResidenciaEmpleado">Dirección de residencia:</label></th>
+            <td><span id="direccionResidenciaEmpleado">{{ contrato.direccion_residencia_empleado }}</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <br>
+    <!-- DATOS DEL CONTRATO -->
+    <div class="subcontenedor">
+      <h3>DATOS DEL CONTRATO</h3>
+      <table>
+        <tbody>
+          
+          <tr>
+            <th><label for="tipoContrato">Tipo de contrato:</label></th>
+            <td><span id="tipoContrato">{{ contrato.tipo_contrato }}</span></td>
+          </tr>
+          <tr>
+            <th><label for="cargoContrato">Cargo:</label></th>
+            <td><span id="cargoContrato">{{ contrato.cargo_contrato }}</span></td>
+          </tr>
+          <tr>
+            <th><label for="salario">Salario:</label></th>
+            <td><span id="salario">{{ contrato.salario }}</span></td>
+          </tr>
+          <tr>
+            <th><label for="duracionContrato">Duración del contrato:</label></th>
+            <td><span id="duracionContrato">{{ contrato.duracion_contrato }}</span></td>
+          </tr>
+          <tr>
+            <th><label for="fechaInicio">Fecha de iniciación de labores:</label></th>
+            <td><span id="fechaInicio">{{ contrato.fecha_inicio }}</span></td>
+          </tr>
+          <tr>
+            <th><label for="fechaTerminacion">Fecha de terminación:</label></th>
+            <td><span id="fechaTerminacion">{{ contrato.fecha_terminacion }}</span></td>
+          </tr>
+          <tr>
+            <th><label for="fechaPreAviso">Fecha pre aviso</label></th>
+            <td><span id="fechaPreAviso">{{ contrato.fecha_carga_adjunto_4 }}</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <br>
+    <!-- ADJUNTOS CONTRATOS -->
+    <div class="subcontenedor adjuntos">
+      <h3>ADJUNTOS CONTRATOS</h3>
+      <div>
+        <label for="adjunto1">Documento</label>
+        <span id="adjunto1">{{ contrato.adjunto_contrato_1.name }}</span>
+        <label for="fechaCargaAdjunto1">Fecha de Carga:</label>
+        <span id="fechaCargaAdjunto1">{{ contrato.fecha_carga_adjunto_1 }}</span>
+      </div>
+    </div>
+    <br>
+    <!-- ADJUNTOS PRE AVISO -->
+    <div class="subcontenedor adjuntos">
+      <h3>ADJUNTOS PRE AVISO</h3>
+      <div>
+        <label for="adjunto4">Documento</label>
+        <span id="adjunto4">{{ contrato.adjunto_preaviso_4.name }}</span>
+        <label for="fechaCargaAdjunto4">Fecha de Carga:</label>
+        <span id="fechaCargaAdjunto4">{{ contrato.fecha_carga_adjunto_4 }}</span>
+      </div>
+    </div>
+
+    <form method="post" action="{% url 'editar_contrato' contrato.id %}">
+      {% csrf_token %}
+      {{ form|crispy }}
+      <button type="submit" class="btn btn-primary">Guardar cambios</button>
+    </form>
+
+  </div>
+
+{% endblock contenido %}
+
+
