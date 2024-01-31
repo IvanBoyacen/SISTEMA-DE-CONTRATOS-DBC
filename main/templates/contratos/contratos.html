@@ -1,52 +1,52 @@
 {% extends 'partials/body.html' %}
 {% load static %}
-
 {% block contenido %}
 
-  <title>CONTRATOS</title>
+<title>CONTRATOS</title>
 
-  <div class="contenedor" id="contenedor-contrato">
-    <h2>CONTRATOS</h2>
 
-<a href="{% url 'crear_contrato' %}">
-  <button class="boton-editar">Crear Nuevo Contrato</button>
-</a>
+  <a href="{% url 'crear_contrato' %}">
+    <button type="button" class="btn btn-primary" id="boton-crear">Crear Nuevo Contrato</button>
+  </a>
 
-    <div class="subcontenedor">
-      <table>
-        <thead>
-          <tr>
-            <th>Empleado</th>
-            <th>Correo electrónico</th>
-            <th>Celular</th>
-            <th>Tipo de contrato</th>
-            <th>Cargo</th>
-            <th>Fecha de iniciación de labores</th>
-            <th>Fecha de terminación</th>
-            <th>Fecha pre aviso</th>
-            <th>Detalles</th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for contrato in contratos %}
-            <tr>
-              <td>{{ contrato.empleado_nombre }}</td>
-              <td>{{ contrato.empleado_correo }}</td>
-              <td>{{ contrato.empleado_celular }}</td>
-              <td>{{ contrato.tipo_contrato }}</td>
-              <td>{{ contrato.cargo_contrato }}</td>
-              <td>{{ contrato.fecha_inicio }}</td>
-              <td>{{ contrato.fecha_terminacion }}</td>
-              <td>{{ contrato.fecha_preaviso }}</td>
-              <td>
-                <a href="{% url 'detalles_contrato' contrato.id %}">
-                  <button class="boton-editar">Ver Mas</button>
-                </a>
-              </td>
-            </tr>
-          {% endfor %}
-        </tbody>
-      </table>
-    </div>
+<div class="row">
+  <div class="col">
+  <table class="table table-striped table-hover table-bordered border-secondary caption-top">
+    <caption>CONTRATOS</caption>
+    <thead class="align-top">
+      <tr id="tabla-header">
+        <th>Empleado</th>
+        <th>Correo electrónico</th>
+        <th>Celular</th>
+        <th>Tipo de contrato</th>
+        <th>Cargo</th>
+        <th>Fecha de iniciación de labores</th>
+        <th>Fecha de terminación</th>
+        <th>Fecha pre aviso</th>
+        <th>Detalles</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for contrato in contratos %}
+        <tr>
+          <td>{{ contrato.nombre_empleado }}</td>
+          <td>{{ contrato.correo_empleado }}</td>
+          <td>{{ contrato.celular_empleado }}</td>
+          <td>{{ contrato.tipo_contrato }}</td>
+          <td>{{ contrato.cargo_contrato }}</td>
+          <td>{{ contrato.fecha_inicio }}</td>
+          <td>{{ contrato.fecha_terminacion }}</td>
+          <td>{{ contrato.fecha_pre_aviso }}</td>
+          <td>
+            <a href="{% url 'detalles_contrato' contrato.id %}">
+              <button class="btn btn-success" id="ver-mas">Ver Más</button>
+            </a>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+</div>
 
-  {% endblock contenido %}
+{% endblock contenido %}

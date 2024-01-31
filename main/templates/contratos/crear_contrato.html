@@ -3,146 +3,190 @@
 {% load crispy_forms_tags %}
 
 {% block contenido %}
+  <title>CONTRATO</title>
 
-  <title>CREAR CONTRATO</title>
+  <div class="contenedor" id="contenedor-contrato">
+    <h2>CONTRATO</h2>
+    <br>
 
-  <div class="contenedor" id="contrato-crear">
-    <h2>CREAR CONTRATO</h2>
+    <!-- DATOS DE LA EMPRESA -->
+    <div class="seccion-container">
+      <div class="row">
+        <div class="col">
+          <form method="post" action="{% url 'crear_contrato' %}" class="form">
+            {% csrf_token %}
+          <h3>DATOS DE LA EMPRESA</h3>
+          <br>
+            <div class="row mb-3">
+              <div class="col-md-4"style="margin-bottom: 20px;">
+                <label for="nombreEmpresa" class="form-label">Razón social:</label>
+                <input type="text" name="Razón_Social" value="{{ contrato.razón_social }}" class="form-control" required>
+              </div>
+              <div class="col-md-4"style="margin-bottom: 20px;">
+                <label for="nit_empresa" class="form-label">NIT:</label>
+                <input type="text" name="nit_empresa" value="{{ contrato.nit_empresa }}" class="form-control" required>
+              </div>
+              <div class="col-md-4"style="margin-bottom: 20px;">
+                <label for="cargo" class="form-label">Direccion:</label>
+                <input type="text" name="direccion_empresa" value="{{ contrato.direccion_empresa }}" class="form-control" required>
+              </div>
+            </div>
 
-    <form method="post" action="{% url 'crear_contrato' %}" class="formulario">
-      {% csrf_token %}
+            <div class="row mb-3">
+              <div class="col-md-4"style="margin-bottom: 20px;">
+                <label for="celular" class="form-label">Celular:</label>
+                <input type="text" name="celular_empleador" value="{{ contrato.celular_empleador }}" class="form-control" required>
+              </div>
+              <div class="col-md-4"style="margin-bottom: 20px;">
+                <label for="representante" class="form-label">Nombre Completo Representante:</label>
+                <input type="text" name="representante" value="{{ contrato.representante }}" class="form-control" required>
+              </div>
+              <div class="col-md-4"style="margin-bottom: 20px;">
+                <label for="cargo" class="form-label">Cargo:</label>
+                <input type="text" name="cargo_empleador" value="{{ contrato.cargo_empleador }}" class="form-control" required>
+              </div>
+            </div>
 
-      <table class="formulario-table">
+            <div class="row mb-3">
+              <div class="col-md-4"style="margin-bottom: 20px;">
+                <label for="cc" class="form-label">Tipo de documento de identidad:</label>
+                <input type="text" name="tipo_documento_empleador" value="{{ contrato.tipo_documento_empleador }}" class="form-control" required>
+              </div>
+              <div class="col-md-4"style="margin-bottom: 20px;">
+                <label for="cc" class="form-label">Numero de documento de identidad:</label>
+                <input type="text" name="numero_documento_empleador" value="{{ contrato.numero_documento_empleador }}" class="form-control" required>
+              </div>
+              <div class="col-md-4"style="margin-bottom: 20px;">
+                <label for="lugarExpedicion" class="form-label">Lugar de expedición del documento de identidad:</label>
+                <input type="text" name="lugar_expedicion_cc_empleador" value="{{ contrato.lugar_expedicion_cc_empleador }}" class="form-control" required>
+              </div>
+            </div>
 
-        <!-- EMPRESA -->
-        <tr>
-          <td colspan="2">
-            <h3>EMPRESA</h3>
-          </td>
-        </tr>
-        <tr>
-          <td>{{ form.nombre_empresa.label_tag }}</td>
-          <td>{{ form.nombre_empresa }}</td>
-        </tr>
-        <tr>
-          <td>{{ form.representante.label_tag }}</td>
-          <td>{{ form.representante }}</td>
-        </tr>
-        <tr>
-          <td>{{ form.cargo_empleador.label_tag }}</td>
-          <td>{{ form.cargo_empleador }}</td>
-        </tr>
-        <tr>
-          <td>{{ form.cc_empleador.label_tag }}</td>
-          <td>{{ form.cc_empleador }}</td>
-        </tr>
-        <tr>
-          <td>{{ form.lugar_expedicion_cc_empleador.label_tag }}</td>
-          <td>{{ form.lugar_expedicion_cc_empleador }}</td>
-        </tr>
-        <tr>
-          <td>{{ form.celular_empleador.label_tag }}</td>
-          <td>{{ form.celular_empleador }}</td>
-        </tr>
-        <tr>
-          <td>{{ form.correo_electronico_empleador.label_tag }}</td>
-          <td>{{ form.correo_electronico_empleador }}</td>
-        </tr>
-        <tr>
-          <td>{{ form.direccion_residencia_empleador.label_tag }}</td>
-          <td>{{ form.direccion_residencia_empleador }}</td>
-        </tr>
+            <div class="row mb-4"> 
 
-        <!-- EMPLEADO -->
-        <tr>
-          <td colspan="2">
-            <h3>EMPLEADO</h3>
-          </td>
-        </tr>
-        <tr>
-          <td>{{ form.nombre_empleado.label_tag }}</td>
-          <td>{{ form.nombre_empleado }}</td>
-        </tr>
-        <tr>
-          <td>{{ form.cc_empleado.label_tag }}</td>
-          <td>{{ form.cc_empleado }}</td>
-        </tr>
-        <tr>
-          <td>{{ form.correo_empleado.label_tag }}</td>
-          <td>{{ form.correo_empleado }}</td>
-        </tr>
-        <tr>
-          <td>{{ form.celular_empleado.label_tag }}</td>
-          <td>{{ form.celular_empleado }}</td>
-        </tr>
-        <tr>
-          <td>{{ form.direccion_residencia_empleado.label_tag }}</td>
-          <td>{{ form.direccion_residencia_empleado }}</td>
-        </tr>
+              <div class="col-md-4" style="margin-bottom: 20px;">
+                <label for="correoElectronico" class="form-label">Correo electrónico:</label>
+                <input type="text" name="correo_electronico_empleador" value="{{ contrato.correo_electronico_empleador }}" class="form-control" required>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
 
-        <!-- CONTRATO -->
-        <tr>
-          <td colspan="2">
-            <h3>CONTRATO</h3>
-          </td>
-        </tr>
-        <tr>
-          <td>{{ form.cargo_contrato.label_tag }}</td>
-          <td>{{ form.cargo_contrato }}</td>
-        </tr>
-        <tr>
-          <td>{{ form.salario.label_tag }}</td>
-          <td>{{ form.salario }}</td>
-        </tr>
-        <tr>
-          <td>{{ form.duracion_contrato.label_tag }}</td>
-          <td>{{ form.duracion_contrato }}</td>
-        </tr>
-        <tr>
-          <td>{{ form.fecha_inicio.label_tag }}</td>
-          <td>{{ form.fecha_inicio }}</td>
-        </tr>
-        <tr>
-          <td>{{ form.fecha_terminacion.label_tag }}</td>
-          <td>{{ form.fecha_terminacion }}</td>
-        </tr>
-        <tr>
-          <td>{{ form.tipo_contrato.label_tag }}</td>
-          <td>{{ form.tipo_contrato }}</td>
-        </tr>
+    <!-- DATOS DEL EMPLEADO -->
+    <div class="seccion-container">
+      <div class="row">
+        <div class="col">
+          <h3>DATOS DEL EMPLEADO</h3>
+          <br>
+            <div class="row mb-3">
+              <div class="col-md-4"style="margin-bottom: 20px;">
+                <label for="nombreEmpleado" class="form-label">Nombre Completo:</label>
+                <input type="text" name="nombre_empleado" value="{{ contrato.nombre_empleado }}" class="form-control" required>
+              </div>
+              <div class="col-md-4"style="margin-bottom: 20px;">
+                <label for="tipoDocumento" class="form-label">Tipo de documento de identidad:</label>
+                <input type="text" name="tipo_documento_empleado" value="{{ contrato.tipo_documento_empleado }}" class="form-control" required>
+              </div>
+              <div class="col-md-4"style="margin-bottom: 20px;">
+                <label for="numeroDocumento" class="form-label">Numero de documento de identidad:</label>
+                <input type="text" name="numero_documento_empleado" value="{{ contrato.numero_documento_empleado }}" class="form-control" required>
+              </div>
+            </div>
 
-        <!-- ADJUNTOS -->
-        <tr>
-          <td colspan="2">
-            <h3>ADJUNTOS</h3>
-          </td>
-        </tr>
-        <tr>
-          <td>{{ form.adjunto_contrato_1.label_tag }}</td>
-          <td>{{ form.adjunto_contrato_1 }}</td>
-        </tr>
-        <tr>
-          <td>{{ form.fecha_carga_adjunto_1.label_tag }}</td>
-          <td>{{ form.fecha_carga_adjunto_1 }}</td>
-        </tr>
-        <tr>
-          <td>{{ form.adjunto_preaviso_4.label_tag }}</td>
-          <td>{{ form.adjunto_preaviso_4 }}</td>
-        </tr>
-        <tr>
-          <td>{{ form.fecha_carga_adjunto_4.label_tag }}</td>
-          <td>{{ form.fecha_carga_adjunto_4 }}</td>
-        </tr>
+            <div class="row mb-3">
+              <div class="col-md-4"style="margin-bottom: 20px;">
+                <label for="correoEmpleado" class="form-label">Correo electrónico:</label>
+                <input type="text" name="correo_empleado" value="{{ contrato.correo_empleado }}" class="form-control" required>
+              </div>
+              <div class="col-md-4"style="margin-bottom: 20px;">
+                <label for="celularEmpleado" class="form-label">Celular:</label>
+                <input type="text" name="celular_empleado" value="{{ contrato.celular_empleado }}" class="form-control" required>
+              </div>
+              <div class="col-md-4"style="margin-bottom: 20px;">
+                <label for="direccionResidenciaEmpleado" class="form-label">Dirección de residencia:</label>
+                <input type="text" name="direccion_residencia_empleado" value="{{ contrato.direccion_residencia_empleado }}" class="form-control" required>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
 
-      </table>
+    <!-- DATOS DEL CONTRATO -->
+    <div class="seccion-container">
+      <div class="row">
+        <div class="col">
+          <h3>DATOS DEL CONTRATO</h3>
+          <br>
+            <div class="row mb-3">
+              <div class="col-md-4"style="margin-bottom: 20px;">
+                <label for="tipoContrato" class="form-label">Tipo de contrato:</label>
+                <input type="text" name="tipo_contrato" value="{{ contrato.tipo_contrato }}" class="form-control" required>
+              </div>
+              <div class="col-md-4"style="margin-bottom: 20px;">
+                <label for="cargoContrato" class="form-label">Cargo:</label>
+                <input type="text" name="cargo_contrato" value="{{ contrato.cargo_contrato }}" class="form-control" required>
+              </div>
+              <div class="col-md-4"style="margin-bottom: 20px;">
+                <label for="salario" class="form-label">Salario:</label>
+                <input type="text" name="salario" value="{{ contrato.salario }}" class="form-control" required>
+              </div>
+            </div>
 
-      <button type="submit" class="btn btn-primary">Crear contrato</button>
-    </form>
+            <div class="row mb-3">
+              <div class="col-md-4"style="margin-bottom: 20px;">
+                <label for="duracionContrato" class="form-label">Duración del contrato:</label>
+                <input type="text" name="duracion_contrato" value="{{ contrato.duracion_contrato }}" class="form-control" required>
+              </div>
+              <div class="col-md-4"style="margin-bottom: 20px;">
+                <label for="fechaInicio" class="form-label">Fecha de iniciación de labores:</label>
+                <input type="text" name="fecha_inicio" value="{{ contrato.fecha_inicio }}" class="form-control" required>
+              </div>
+              <div class="col-md-4"style="margin-bottom: 20px;">
+                <label for="fechaTerminacion" class="form-label">Fecha de terminación:</label>
+                <input type="text" name="fecha_terminacion" value="{{ contrato.fecha_terminacion }}" class="form-control" required>
+              </div>
+              <div class="col-md-4"style="margin-bottom: 20px;">
+                <label for="fecha_pre_aviso" class="form-label">Fecha pre-aviso:</label>
+                <input type="text" name="fecha_pre_aviso" value="{{ contrato.fecha_pre_aviso }}" class="form-control" required>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
 
-    <a href="{% url 'contratos' %}">
-      <button class="boton-editar">Volver a la lista de contratos</button>
-    </a>
+    <!-- ADJUNTOS CONTRATOS -->
+    <div class="seccion-container adjuntos">
+      <h3>CONTRATO</h3>
+      <br>
+      <div class="row mb-3">
+        <div class="col-md-4"style="margin-bottom: 20px;">
+          <label for="adjunto1" class="form-label">Documento</label>
+          <input type="text" name="adjunto_contrato_1" value="{{ contrato.adjunto_contrato_1.name }}" class="form-control" readonly>
+        </div>
+        <div class="col-md-4" style="margin-bottom: 20px;">
+          <label for="fechaCargaAdjunto1" class="form-label">Fecha de Carga:</label>
+          <input type="text" name="fecha_carga_adjunto_1" value="{{ contrato.fecha_carga_adjunto_1 }}" class="form-control" readonly>
+        </div>
+      </div>
+    </div>
+    <br>
+
+    <!-- ADJUNTOS PRE AVISO -->
+    <div class="seccion-container adjuntos">
+      <h3>PRE-AVISO</h3>
+      <br>
+      <div class="row mb-4"> <!-- Mayor margen inferior aquí -->
+        <div class="col-md-4"style="margin-bottom: 20px;">
+          <label for="adjunto4" class="form-label">Documento</label>
+          <input type="text" name="adjunto_preaviso_4" value="{{ contrato.adjunto_preaviso_4.name }}" class="form-control" readonly>
+        </div>
+        <div class="col-md-4"style="margin-bottom: 20px;">
+          <label for="fechaCargaAdjunto4" class="form-label">Fecha de Carga:</label>
+          <input type="text" name="fecha_carga_adjunto_4" value="{{ contrato.fecha_carga_adjunto_4 }}" class="form-control" readonly>
+        </div>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Crear</button>
   </div>
-
 {% endblock contenido %}
-

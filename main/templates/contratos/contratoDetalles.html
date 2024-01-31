@@ -1,151 +1,209 @@
 {% extends 'partials/body.html' %}
 {% load static %}
 {% load crispy_forms_tags %}
-{% block contenido %}
 
+{% block contenido %}
   <title>CONTRATO</title>
 
   <div class="contenedor" id="contenedor-contrato">
     <h2>CONTRATO</h2>
+    <br>
 
-    <!-- DATOS DEL EMPLEADOR -->
-    <div class="subcontenedor">
-      <h3>DATOS DEL EMPLEADOR</h3>
-      <table>
-        <tbody>
-          <tr>
-            <th><label for="nombreEmpresa">Nombre de la empresa:</label></th>
-            <td><span id="nombreEmpresa">{{ contrato.nombre_empresa }}</span></td>
-          </tr>
-          <tr>
-            <th><label for="representante">Representante:</label></th>
-            <td><span id="representante">{{ contrato.representante }}</span></td>
-          </tr>
-          <tr>
-            <th><label for="cargo">Cargo:</label></th>
-            <td><span id="cargo">{{ contrato.cargo_empleador }}</span></td>
-          </tr>
-          <tr>
-            <th><label for="cc">CC:</label></th>
-            <td><span id="cc">{{ contrato.cc_empleador }}</span></td>
-          </tr>
-          <tr>
-            <th><label for="lugarExpedicion">Lugar de expedición CC:</label></th>
-            <td><span id="lugarExpedicion">{{ contrato.lugar_expedicion_cc_empleador }}</span></td>
-          </tr>
-          <tr>
-            <th><label for="celular">Celular:</label></th>
-            <td><span id="celular">{{ contrato.celular_empleador }}</span></td>
-          </tr>
-          <tr>
-            <th><label for="correoElectronico">Correo electrónico:</label></th>
-            <td><span id="correoElectronico">{{ contrato.correo_electronico_empleador }}</span></td>
-          </tr>
-          <tr>
-            <th><label for="direccionResidencia">Dirección de residencia:</label></th>
-            <td><span id="direccionResidencia">{{ contrato.direccion_residencia_empleador }}</span></td>
-          </tr>
-        </tbody>
-      </table>
+    <!-- DATOS DE LA EMPRESA -->
+    <div class="seccion-container">
+      <div class="row">
+        <div class="col">
+          <h3>DATOS DE LA EMPRESA</h3>
+          <br>
+            <div class="row mb-3">
+              <div class="col-md-4">
+                <label for="Razón_Social" class="form-label">Razón social:</label>
+                <span id="Razón_Social">{{ contrato.razón_social }}</span>
+              </div>
+              <div class="col-md-4">
+                <label for="nit_empresa" class="form-label">NIT:</label>
+                <span id="nit_empresa">{{ contrato.nit_empresa }}</span>
+              </div>
+              <div class="col-md-4">
+                <label for="direccionResidencia" class="form-label">Dirección:</label>
+                <span id="direccionResidencia">{{ contrato.direccion_empresa }}</span>
+              </div>
+            </div>
+
+            <div class="row mb-3">
+              <div class="col-md-4">
+                <label for="celular" class="form-label">Celular:</label>
+                <span id="celular">{{ contrato.celular_empleador }}</span>
+              </div>
+              <div class="col-md-4">
+                <label for="nombre_representante" class="form-label">Nombre Completo Representante:</label>
+                <span id="nombre_representante">{{ contrato.nombre_representante }}</span>
+              </div>
+              <div class="col-md-4">
+                <label for="cargo" class="form-label">Cargo:</label>
+                <span id="cargo_representante">{{ contrato.cargo_representante }}</span>
+              </div>
+            </div>
+
+            <div class="row mb-3">
+              <div class="col-md-4">
+                <label for="tipo_documento_empleador" class="form-label">Tipo de documento de identidad:</label>
+                <span id="tipo_documento_empleador">{{ contrato.tipo_documento_empleador }}</span>
+              </div>
+              <div class="col-md-4">
+                <label for="numero_documento_empleador" class="form-label">Numero de documento de identidad:</label>
+                <span id="numero_documento_empleador">{{ contrato.numero_documento_empleador }}</span>
+              </div>
+              <div class="col-md-4">
+                <label for="lugarExpedicion" class="form-label">Lugar de expedición del documento de identidad:</label>
+                <span id="lugarExpedicion">{{ contrato.lugar_expedicion_cc_empleador }}</span>
+              </div>
+            </div>
+
+            <div class="row mb-3">
+              <div class="col-md-4">
+                <label for="correoElectronico" class="form-label">Correo electrónico:</label>
+                <span id="correoElectronico">{{ contrato.correo_electronico_empleador }}</span>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
-    <br>
+
     <!-- DATOS DEL EMPLEADO -->
-    <div class="subcontenedor">
-      <h3>DATOS DEL EMPLEADO</h3>
-      <table>
-        <tbody>
-          <tr>
-            <th><label for="nombreEmpleado">Empleado:</label></th>
-            <td><span id="nombreEmpleado">{{ contrato.nombre_empleado }}</span></td>
-          </tr>
-          <tr>
-            <th><label for="ccEmpleado">CC:</label></th>
-            <td><span id="ccEmpleado">{{ contrato.cc_empleado }}</span></td>
-          </tr>
-          <tr>
-            <th><label for="correoEmpleado">Correo electrónico:</label></th>
-            <td><span id="correoEmpleado">{{ contrato.correo_empleado }}</span></td>
-          </tr>
-          <tr>
-            <th><label for="celularEmpleado">Celular:</label></th>
-            <td><span id="celularEmpleado">{{ contrato.celular_empleado }}</span></td>
-          </tr>
-          <tr>
-            <th><label for="direccionResidenciaEmpleado">Dirección de residencia:</label></th>
-            <td><span id="direccionResidenciaEmpleado">{{ contrato.direccion_residencia_empleado }}</span></td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="seccion-container">
+      <div class="row">
+        <div class="col">
+          <h3>DATOS DEL EMPLEADO</h3>
+          <br>
+            <div class="row mb-3">
+              <div class="col-md-4">
+                <label for="representante" class="form-label">Nombre Completo:</label>
+                <span id="nombreEmpleado">{{ contrato.nombre_empleado }}</span>
+              </div>
+              <div class="col-md-4">
+                <label for="tipo_documento_empleado" class="form-label">Tipo de documento de identidad:</label>
+                <span id="tipo_documento_empleado">{{ contrato.tipo_documento_empleado }}</span>
+              </div>
+              <div class="col-md-4">
+                <label for="numero_documento_empleado" class="form-label">Numero de documento de identidad:</label>
+                <span id="numero_documento_empleado">{{ contrato.numero_documento_empleado }}</span>
+              </div>
+            </div>
+
+            <div class="row mb-3">
+              <div class="col-md-4">
+                <label for="correoEmpleado" class="form-label">Correo electrónico:</label>
+                <span id="correoEmpleado">{{ contrato.correo_empleado }}</span>
+              </div>
+              <div class="col-md-4">
+                <label for="celularEmpleado" class="form-label">Celular:</label>
+                <span id="celularEmpleado">{{ contrato.celular_empleado }}</span>
+              </div>
+              <div class="col-md-4">
+                <label for="direccionResidenciaEmpleado" class="form-label">Dirección de residencia:</label>
+                <span id="direccionResidenciaEmpleado">{{ contrato.direccion_residencia_empleado }}</span>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
-    <br>
+
     <!-- DATOS DEL CONTRATO -->
-    <div class="subcontenedor">
-      <h3>DATOS DEL CONTRATO</h3>
-      <table>
-        <tbody>
-          
-          <tr>
-            <th><label for="tipoContrato">Tipo de contrato:</label></th>
-            <td><span id="tipoContrato">{{ contrato.tipo_contrato }}</span></td>
-          </tr>
-          <tr>
-            <th><label for="cargoContrato">Cargo:</label></th>
-            <td><span id="cargoContrato">{{ contrato.cargo_contrato }}</span></td>
-          </tr>
-          <tr>
-            <th><label for="salario">Salario:</label></th>
-            <td><span id="salario">{{ contrato.salario }}</span></td>
-          </tr>
-          <tr>
-            <th><label for="duracionContrato">Duración del contrato:</label></th>
-            <td><span id="duracionContrato">{{ contrato.duracion_contrato }}</span></td>
-          </tr>
-          <tr>
-            <th><label for="fechaInicio">Fecha de iniciación de labores:</label></th>
-            <td><span id="fechaInicio">{{ contrato.fecha_inicio }}</span></td>
-          </tr>
-          <tr>
-            <th><label for="fechaTerminacion">Fecha de terminación:</label></th>
-            <td><span id="fechaTerminacion">{{ contrato.fecha_terminacion }}</span></td>
-          </tr>
-          <tr>
-            <th><label for="fechaPreAviso">Fecha pre aviso</label></th>
-            <td><span id="fechaPreAviso">{{ contrato.fecha_carga_adjunto_4 }}</span></td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="seccion-container">
+      <div class="row">
+        <div class="col">
+          <h3>DATOS DEL CONTRATO</h3>
+          <br>
+          <form method="post" action="{% url 'editar_contrato' contrato.id %}" class="form">
+            {% csrf_token %}
+
+            <div class="row mb-3">
+              <div class="col-md-4">
+                <label for="tipoContrato" class="form-label">ID de contrato:</label>
+                <span id="tipoContrato">{{ contrato.id }}</span>
+              </div>
+              <div class="col-md-4">
+                <label for="tipoContrato" class="form-label">Tipo de contrato:</label>
+                <span id="tipoContrato">{{ contrato.tipo_contrato }}</span>
+              </div>
+              <div class="col-md-4">
+                <label for="cargoContrato" class="form-label">Cargo:</label>
+                <span id="cargoContrato">{{ contrato.cargo_contrato }}</span>
+              </div>
+            </div>
+
+            <div class="row mb-3">
+
+              <div class="col-md-4">
+                <label for="fechaInicio" class="form-label">Fecha de iniciación de labores:</label>
+                <span id="fechaInicio">{{ contrato.fecha_inicio }}</span>
+              </div>
+              <div class="col-md-4">
+                <label for="fechaTerminacion" class="form-label">Fecha de terminación:</label>
+                <span id="fechaTerminacion">{{ contrato.fecha_terminacion }}</span>
+              </div>
+              <div class="col-md-4">
+                <label for="fecha_pre_aviso" class="form-label">Fecha de pre-aviso:</label>
+                <span id="fecha_pre_aviso">{{ contrato.fecha_pre_aviso }}</span>
+              </div>
+            </div>
+
+            <div class="row mb-3">
+              <div class="col-md-4">
+                <label for="duracionContrato" class="form-label">Duración del contrato:</label>
+                <span id="duracionContrato">{{ contrato.duracion_contrato }}</span>
+              </div>
+              <div class="col-md-4">
+                <label for="salario" class="form-label">Salario:</label>
+                <span id="salario">{{ contrato.salario }}</span>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
-    <br>
+
     <!-- ADJUNTOS CONTRATOS -->
-    <div class="subcontenedor adjuntos">
-      <h3>ADJUNTOS CONTRATOS</h3>
-      <div>
-        <label for="adjunto1">Documento</label>
-        <span id="adjunto1">{{ contrato.adjunto_contrato_1.name }}</span>
-        <label for="fechaCargaAdjunto1">Fecha de Carga:</label>
-        <span id="fechaCargaAdjunto1">{{ contrato.fecha_carga_adjunto_1 }}</span>
+    <div class="seccion-container adjuntos">
+      <h3>CONTRATO</h3>
+      <br>
+      <div class="row mb-3">
+        <div class="col-md-4">
+          <label for="adjunto1" class="form-label">Documento</label>
+          <span id="adjunto1">{{ contrato.adjunto_contrato_1.name }}</span>
+        </div>
+        <div class="col-md-4">
+          <label for="fechaCargaAdjunto1" class="form-label">Fecha de Carga:</label>
+          <span id="fechaCargaAdjunto1">{{ contrato.fecha_carga_adjunto_1 }}</span>
+        </div>
       </div>
     </div>
     <br>
+
     <!-- ADJUNTOS PRE AVISO -->
-    <div class="subcontenedor adjuntos">
-      <h3>ADJUNTOS PRE AVISO</h3>
-      <div>
-        <label for="adjunto4">Documento</label>
-        <span id="adjunto4">{{ contrato.adjunto_preaviso_4.name }}</span>
-        <label for="fechaCargaAdjunto4">Fecha de Carga:</label>
-        <span id="fechaCargaAdjunto4">{{ contrato.fecha_carga_adjunto_4 }}</span>
+    <div class="seccion-container adjuntos">
+      <h3>PRE-AVISO</h3>
+      <div class="row mb-3">
+        <div class="col-md-4">
+          <label for="adjunto4" class="form-label">Documento</label>
+          <span id="adjunto4">{{ contrato.adjunto_preaviso_4.name }}</span>
+        </div>
+        <div class="col-md-4">
+          <label for="fechaCargaAdjunto4" class="form-label">Fecha de Carga:</label>
+          <span id="fechaCargaAdjunto4">{{ contrato.fecha_carga_adjunto_4 }}</span>
+        </div>
       </div>
     </div>
 
     <form method="post" action="{% url 'editar_contrato' contrato.id %}">
       {% csrf_token %}
       {{ form|crispy }}
-      <button type="submit" class="btn btn-primary">Guardar cambios</button>
+      <button type="submit" class="btn btn-primary">Editar</button>
     </form>
 
   </div>
-
 {% endblock contenido %}
-
 
