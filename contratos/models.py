@@ -3,18 +3,19 @@ from django.db.models.signals import pre_save
 from django.dispatch import receiver
 from django.utils import timezone
 
-class Contratos(models.Model):
+class Contrato(models.Model):
     # DATOS DE LA EMPRESA
     razón_social = models.CharField(max_length=255, default='DIGITAL BRIDGE COMMUNICATIONS WORLWIDE S.A.S')
     nit_empresa = models.CharField(max_length=20, default='901481430')
-    nombre_representante = models.CharField(max_length=255, default='Jonathan Cifuentes')
-    cargo_representante = models.CharField(max_length=255, default='Gerente')
-    tipo_documento_empleador = models.CharField(max_length=255, choices=[("CC", "Cédula de Ciudadanía"), ("CE", "Cédula de Extranjería"), ("P", "Pasaporte")], default='CC')
-    numero_documento_empleador = models.CharField(max_length=20, default='000')
-    lugar_expedicion_cc_empleador = models.CharField(max_length=255, default='NA')
-    celular_empleador = models.CharField(max_length=20, default='+1 (336) 899-7553')
-    correo_electronico_empleador = models.EmailField(max_length=255, default='jcifuentes@dbcw.com.co')
-    direccion_empresa = models.CharField(max_length=255, default='Jenesano-Boyacá')
+    nombre_representante_legal = models.CharField(max_length=255, default='Jonathan Cifuentes Cadena')
+    cargo_representante_legal = models.CharField(max_length=255, default='Gerente')
+    tipo_documento_representante_legal = models.CharField(max_length=255, choices=[("CC", "Cédula de Ciudadanía"), ("CE", "Cédula de Extranjería"), ("P", "Pasaporte")], default='CC')
+    numero_documento_representante_legal = models.CharField(max_length=20, default='1016019519')
+    lugar_expedicion_documento_representante_legal = models.CharField(max_length=255, default='Bogotá')
+    celular_representante_legal = models.CharField(max_length=20, default='+1 (336) 899-7553')
+    correo_electronico_representante_legal = models.EmailField(max_length=255, default='jcifuentes@dbcw.com.co')
+    ubicacion = models.CharField(max_length=255, default='Jenesano-Boyacá')
+    direccion_notificacion_judicial= models.CharField(max_length=255, default='0')
 
     # DATOS DEL EMPLEADO
     nombre_empleado = models.CharField(max_length=255)
@@ -44,7 +45,7 @@ class Contratos(models.Model):
     def __str__(self):
         return self.tipo_contrato
 
-@receiver(pre_save, sender=Contratos)
+@receiver(pre_save, sender=Contrato)
 def actualizar_fecha_carga_adjunto(sender, instance, **kwargs):
     # Actualizar la fecha de carga del adjunto antes de guardar
     instance.fecha_carga_adjunto_1 = timezone.now().date()

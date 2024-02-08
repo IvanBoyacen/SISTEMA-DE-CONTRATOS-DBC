@@ -1,21 +1,31 @@
 {% load static %}
 
-<nav class="navbar navbar-expand-lg" >
-  <div class="container-fluid" id="navbar">
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top p-0">
+    <div class="container-fluid" id="navbar-container">
     <a class="navbar-brand" href="{% url 'principal' %}">
       <img src="{% static 'img/logo.png' %}" alt="Logo" class="logo-img" width="250" height="105">
     </a>
     <ul class="nav justify-content-end">
       <li class="nav-item">
-        <a class="nav-link" href="{% url 'contratos' %}">Contratos</a>
+        <a class="nav-link" href="{% url 'contratos' %}">
+          <i class="bi bi-journal-text"></i>
+          Contratos
+        </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Ayuda</a>
+        <a class="nav-link" href="#">
+          <i class="bi bi-person-vcard"></i>
+          Posiciones
+        </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Salir</a>  </div>
+        <a class="nav-link" href="#">
+          <i class="bi bi-person-circle" width="250" height="105"></i>
+          Perfil
+        </a>
       </li>
     </ul>
+    </div>
 </nav>
  
 

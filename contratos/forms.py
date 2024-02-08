@@ -1,7 +1,7 @@
 from django import forms
-from .models import Contratos
+from .models import Contrato
 
 class ContratoForm(forms.ModelForm):
     class Meta:
-        model = Contratos
+        model = Contrato
         fields = '__all__'

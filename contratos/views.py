@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Contratos
+from .models import Contrato
 from .forms import ContratoForm
 
 
-def contratos(request):
-    contratos_list = Contratos.objects.all()
+def contrato(request):
+    contratos_list = Contrato.objects.all()
     return render(request, 'contratos/contratos.html', {'contratos': contratos_list})
 
 def crear_contrato(request):
@@ -23,11 +23,11 @@ def crear_contrato(request):
 
 
 def detalles_contrato(request, contrato_id):
-    contrato = get_object_or_404(Contratos, id=contrato_id)
+    contrato = get_object_or_404(Contrato, id=contrato_id)
     return render(request, 'contratos/contratoDetalles.html', {'contrato': contrato})
 
 def editar_contrato(request, contrato_id):
-    contrato = get_object_or_404(Contratos, id=contrato_id)
+    contrato = get_object_or_404(Contrato, id=contrato_id)
     if request.method == 'POST':
         form = ContratoForm(request.POST, instance=contrato)
         if form.is_valid():
