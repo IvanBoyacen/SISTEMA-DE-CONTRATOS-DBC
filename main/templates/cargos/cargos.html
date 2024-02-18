@@ -1,0 +1,95 @@
+{% extends 'partials/body.html' %}
+{% load static %}
+
+{% block contenido %}
+<title>CARGOS</title>
+
+<br>
+<br>
+<div class="container text-center bg-white text-dark border rounded" id="contenedor_general">
+  <div class="row align-items-start">
+      <div class="col-12">
+        <br>
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h2>Cargos</h2>
+          <a href="{% url 'crear_cargo' %}" class="btn btn-primary float-end" id="boton-crear">Crear Cargo</a>
+        </div>
+        <div class="form-group row">
+          <div class="col-md-6">
+            <select id="filtroCargo" class="form-select">
+              <option value="todos">Todos los cargos</option>
+              <option value="nombre">Nombre</option>
+              <option value="descripcion">Area</option>
+            </select>
+          </div>
+          <div class="col-md-6">
+            <input type="text" id="busqueda" class="form-control" placeholder="Buscar...">
+          </div>
+        </div>
+        <br>
+      </div>
+
+      <div class="col-12 table-responsive">
+        <table class="table table-striped table-hover table-bordered border-secondary ">  
+            <thead class="thead-dark">
+              <tr id="tabla-header">
+              <th scope="col">Nombre del Cargo</th>
+              <th scope="col">Área</th>
+              <th scope="col">Fecha de Creación</th>
+              <th scope="col">Detalles</th>
+            </tr>
+          </thead>
+          <tbody id="tblcargos">
+            {% for cargo in cargos %}
+            <tr>
+              <td>{{ cargo.nombre_cargo }}</td>
+              <td>{{ cargo.area }}</td>
+              <td>{{ cargo.fecha_creacion }}</td>
+              <td>
+                <a href="{% url 'detalles_cargo' cargo.id %}"  class="btn btn-success" id="ver-mas">Ver Detalles</a>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      </div>
+    </div>
+  </div>
+<br>
+<br>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function() {
+    $("#filtroCargo").change(function() {
+      $("#busqueda").val('');
+      filtrarTabla();
+    });
+
+    $("#busqueda").on("keyup", function() {
+      filtrarTabla();
+    });
+
+    function filtrarTabla() {
+      var filtro = $("#filtroCargo").val().toLowerCase();
+      var valor = $("#busqueda").val().toLowerCase();
+
+      $("#tblcargos tr").filter(function() {
+        if (filtro === "todos") {
+          $(this).toggle(true);
+        } else {
+          var index = $(this)
+            .find("td")
+            .eq(filtro === "nombre" ? 0 : 1)
+            .text()
+            .toLowerCase()
+            .indexOf(valor) > -1;
+          $(this).toggle(index);
+        }
+      });
+    }
+  });
+</script>
+
+{% endblock contenido %}
+
