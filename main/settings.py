@@ -42,15 +42,29 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'crispy_forms', #pip install django-crispy-forms
     "crispy_bootstrap5", #pip install crispy-bootstrap5
+    'bootstrap5',
     'contratos',
     'cargos',
+    'personas',
+    'sstpersonas',
+    'sstempresa',
+
 
 ]
+
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5" 
 
 
+JAZZMIN_SETTINGS = {
+
+
+
+    "site_brand": "Administración",
+
+    "site_logo": "img/icono-logo.png",
+}
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',#pip install whitenoise
@@ -135,10 +149,17 @@ STATICFILES_DIRS = [
 ]
 STATIC_ROOT= "/static"
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+LOGIN_URL= 'login'
 LOGIN_REDIRECT_URL= reverse_lazy ('principal')
 
+#SESSION_COOKIE_AGE = 600    
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True

@@ -1,11 +1,14 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Cargo
 from .forms import CargoForm
+from django.contrib.auth.decorators import login_required
 
+@login_required
 def cargos(request):
     cargos_list = Cargo.objects.all()
     return render(request, 'cargos/cargos.html', {'cargos': cargos_list})
 
+@login_required
 def crear_cargo(request):
     if request.method == 'POST':
         form = CargoForm(request.POST) 
@@ -19,10 +22,12 @@ def crear_cargo(request):
 
     return render(request, 'cargos/crear_cargo.html', {'form': form})
 
+@login_required
 def detalles_cargo(request, cargo_id):
     cargo = get_object_or_404(Cargo, id=cargo_id)
     return render(request, 'cargos/cargo_detalles.html', {'cargo': cargo})
 
+@login_required
 def editar_cargo(request, cargo_id):
     cargo = get_object_or_404(Cargo, id=cargo_id)
     if request.method == 'POST':
