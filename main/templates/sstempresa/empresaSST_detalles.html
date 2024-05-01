@@ -1,0 +1,49 @@
+{% extends 'partials/body.html' %}
+{% load static %}
+{% block contenido %}
+<title>DETALLES DOCUMENTO</title>
+<div class="contenedor" id="contenedor-persona">
+  <h2>DETALLES DOCUMENTO</h2>
+  <br>
+  <br><br><br><br>
+  <div class="seccion-container">
+    <div class="row">
+      <div class="col">
+        <h3>Documento {{ empresaSST.id }}</h3>
+        <br>
+        <div class="row mb-3">
+          <div class="col-md-4">
+            <label for="nombrePersona" class="form-label">ID:</label>
+            <span id="nombrePersona">{{ empresaSST.id }}</span>
+          </div>
+          <div class="col-md-4">
+            <label for="nombrePersona" class="form-label">Nombre:</label>
+            <span id="nombrePersona">{{ empresaSST.nombre_documento }}</span>
+          </div>
+          <div class="col-md-4">
+            <label for="tipoDocumentoPersona" class="form-label">Tipo de Documento:</label>
+            <span id="tipoDocumentoPersona">{{ empresaSST.tipo_documento }}</span>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-md-4">
+            <label for="numeroDocumentoPersona" class="form-label">Documento:</label>
+            <span id="numeroDocumentoPersona">{{ empresaSST.archivo }}</span>
+          </div>
+          <div class="col-md-4">
+            <label for="correoPersona" class="form-label">Creado por:</label>
+            <span id="correoPersona">{{ empresaSST.creado_por }}</span>
+          </div>
+          <div class="col-md-4">
+            <label for="celularPersona" class="form-label">Fecha de creacion:</label>
+            <span id="celularPersona">{{ empresaSST.fecha_creacion }}</span>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <a href="{% url 'empresaSST' %}" class="btn btn-primary" id="boton-volver">Volver</a>
+  <a href="{% url 'editar_empresaSST' empresaSST.id %}" class="btn btn-primary float-end" id="boton-editar">Editar</a>
+</div>
+{% endblock contenido %}

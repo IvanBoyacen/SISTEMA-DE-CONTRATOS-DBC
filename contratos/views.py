@@ -1,12 +1,14 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Contratos
-from .forms import ContratoForm
+from .models import Contrato
+from .forms import ContratoForm, ContratoEditForm
+from django.contrib.auth.decorators import login_required
 
-
-def contratos(request):
-    contratos_list = Contratos.objects.all()
+@login_required
+def contrato(request):
+    contratos_list = Contrato.objects.all()
     return render(request, 'contratos/contratos.html', {'contratos': contratos_list})
 
+@login_required
 def crear_contrato(request):
     if request.method == 'POST':
         form = ContratoForm(request.POST, request.FILES) 
@@ -20,20 +22,19 @@ def crear_contrato(request):
 
     return render(request, 'contratos/crear_contrato.html', {'form': form})
 
-
-
+@login_required
 def detalles_contrato(request, contrato_id):
-    contrato = get_object_or_404(Contratos, id=contrato_id)
+    contrato = get_object_or_404(Contrato, id=contrato_id)
     return render(request, 'contratos/contratoDetalles.html', {'contrato': contrato})
 
-def editar_contrato(request, contrato_id):
-    contrato = get_object_or_404(Contratos, id=contrato_id)
+@login_required
+def editar_contrato(request, id):
+    contrato = Contrato.objects.get(id=id)
     if request.method == 'POST':
-        form = ContratoForm(request.POST, instance=contrato)
+        form = ContratoEditForm(request.POST, request.FILES, instance=contrato)
         if form.is_valid():
             form.save()
             return redirect('detalles_contrato', contrato_id=contrato.id)
     else:
-        form = ContratoForm(instance=contrato)
-
+        form = ContratoEditForm(instance=contrato)
     return render(request, 'contratos/editar_contrato.html', {'form': form, 'contrato': contrato})

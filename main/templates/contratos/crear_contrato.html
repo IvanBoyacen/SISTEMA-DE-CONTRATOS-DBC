@@ -3,146 +3,34 @@
 {% load crispy_forms_tags %}
 
 {% block contenido %}
+  <title>CONTRATO</title>
 
-  <title>CREAR CONTRATO</title>
+  <div class="contenedor" id="contenedor-contrato">
+    <h2>CONTRATO</h2>
+    <br>
 
-  <div class="contenedor" id="contrato-crear">
-    <h2>CREAR CONTRATO</h2>
-
-    <form method="post" action="{% url 'crear_contrato' %}" class="formulario">
+    <!-- Formulario de Contrato -->
+    <form method="post" action="{% url 'crear_contrato' %}" enctype="multipart/form-data">
       {% csrf_token %}
-
-      <table class="formulario-table">
-
-        <!-- EMPRESA -->
-        <tr>
-          <td colspan="2">
-            <h3>EMPRESA</h3>
-          </td>
-        </tr>
-        <tr>
-          <td>{{ form.nombre_empresa.label_tag }}</td>
-          <td>{{ form.nombre_empresa }}</td>
-        </tr>
-        <tr>
-          <td>{{ form.representante.label_tag }}</td>
-          <td>{{ form.representante }}</td>
-        </tr>
-        <tr>
-          <td>{{ form.cargo_empleador.label_tag }}</td>
-          <td>{{ form.cargo_empleador }}</td>
-        </tr>
-        <tr>
-          <td>{{ form.cc_empleador.label_tag }}</td>
-          <td>{{ form.cc_empleador }}</td>
-        </tr>
-        <tr>
-          <td>{{ form.lugar_expedicion_cc_empleador.label_tag }}</td>
-          <td>{{ form.lugar_expedicion_cc_empleador }}</td>
-        </tr>
-        <tr>
-          <td>{{ form.celular_empleador.label_tag }}</td>
-          <td>{{ form.celular_empleador }}</td>
-        </tr>
-        <tr>
-          <td>{{ form.correo_electronico_empleador.label_tag }}</td>
-          <td>{{ form.correo_electronico_empleador }}</td>
-        </tr>
-        <tr>
-          <td>{{ form.direccion_residencia_empleador.label_tag }}</td>
-          <td>{{ form.direccion_residencia_empleador }}</td>
-        </tr>
-
-        <!-- EMPLEADO -->
-        <tr>
-          <td colspan="2">
-            <h3>EMPLEADO</h3>
-          </td>
-        </tr>
-        <tr>
-          <td>{{ form.nombre_empleado.label_tag }}</td>
-          <td>{{ form.nombre_empleado }}</td>
-        </tr>
-        <tr>
-          <td>{{ form.cc_empleado.label_tag }}</td>
-          <td>{{ form.cc_empleado }}</td>
-        </tr>
-        <tr>
-          <td>{{ form.correo_empleado.label_tag }}</td>
-          <td>{{ form.correo_empleado }}</td>
-        </tr>
-        <tr>
-          <td>{{ form.celular_empleado.label_tag }}</td>
-          <td>{{ form.celular_empleado }}</td>
-        </tr>
-        <tr>
-          <td>{{ form.direccion_residencia_empleado.label_tag }}</td>
-          <td>{{ form.direccion_residencia_empleado }}</td>
-        </tr>
-
-        <!-- CONTRATO -->
-        <tr>
-          <td colspan="2">
-            <h3>CONTRATO</h3>
-          </td>
-        </tr>
-        <tr>
-          <td>{{ form.cargo_contrato.label_tag }}</td>
-          <td>{{ form.cargo_contrato }}</td>
-        </tr>
-        <tr>
-          <td>{{ form.salario.label_tag }}</td>
-          <td>{{ form.salario }}</td>
-        </tr>
-        <tr>
-          <td>{{ form.duracion_contrato.label_tag }}</td>
-          <td>{{ form.duracion_contrato }}</td>
-        </tr>
-        <tr>
-          <td>{{ form.fecha_inicio.label_tag }}</td>
-          <td>{{ form.fecha_inicio }}</td>
-        </tr>
-        <tr>
-          <td>{{ form.fecha_terminacion.label_tag }}</td>
-          <td>{{ form.fecha_terminacion }}</td>
-        </tr>
-        <tr>
-          <td>{{ form.tipo_contrato.label_tag }}</td>
-          <td>{{ form.tipo_contrato }}</td>
-        </tr>
-
-        <!-- ADJUNTOS -->
-        <tr>
-          <td colspan="2">
-            <h3>ADJUNTOS</h3>
-          </td>
-        </tr>
-        <tr>
-          <td>{{ form.adjunto_contrato_1.label_tag }}</td>
-          <td>{{ form.adjunto_contrato_1 }}</td>
-        </tr>
-        <tr>
-          <td>{{ form.fecha_carga_adjunto_1.label_tag }}</td>
-          <td>{{ form.fecha_carga_adjunto_1 }}</td>
-        </tr>
-        <tr>
-          <td>{{ form.adjunto_preaviso_4.label_tag }}</td>
-          <td>{{ form.adjunto_preaviso_4 }}</td>
-        </tr>
-        <tr>
-          <td>{{ form.fecha_carga_adjunto_4.label_tag }}</td>
-          <td>{{ form.fecha_carga_adjunto_4 }}</td>
-        </tr>
-
-      </table>
-
-      <button type="submit" class="btn btn-primary">Crear contrato</button>
+      {% crispy form %}
     </form>
-
-    <a href="{% url 'contratos' %}">
-      <button class="boton-editar">Volver a la lista de contratos</button>
-    </a>
   </div>
-
+  <br>
+  <br>
+  <!-- En tu plantilla HTML -->
+{% block scripts %}
+{{ block.super }}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.datepicker').datepicker({
+            format: 'yyyy-mm-dd',  // Formato de la fecha
+            autoclose: true,       // Cerrar automáticamente después de seleccionar la fecha
+            todayHighlight: true   // Resaltar la fecha actual
+        });
+    });
+</script>
+{% endblock %}
 {% endblock contenido %}
 

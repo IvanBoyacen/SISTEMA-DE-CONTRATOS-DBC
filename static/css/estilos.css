@@ -1,63 +1,20 @@
-body {
+ .body {
     font-family: 'Arial', sans-serif;
     color: #000;
-    background-color: #fff;
+    background-color: #000;
     margin: 0;
     padding: 0;
+    padding-top:0;
   }
 
-  .navbar {
-    background-color: #0066cc;
-    padding: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .navbar-logo {
-    display: flex;
-    align-items: center;
-    color: #fff;
-  }
-
-  .navbar-logo img {
-    width: 180px; 
-    margin-right: 10px;
-  }
-
-  .navbar-options {
-    display: flex;
-    gap: 20px;
-  }
-
-  .navbar-options a {
-    color: #fff;
-    text-decoration: none;
-  }
-
-  @media (max-width: 768px) {
-    .navbar {
-      flex-direction: column;
-      align-items: flex-start;
+    #navbar-container {
+      background-color: #0857C3;
     }
-
-    .navbar-options {
-      margin-top: 10px;
-      justify-content: flex-end;
+    a.nav-link{
+      color: #fff; 
     }
-
-    .navbar-options a {
-      display: block;
-      margin-bottom: 10px;
-    }
-  }
-
-  
-    .contenedor {
-      width: 70%;
-      margin: 20px auto;
-      padding: 20px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    a.nav-link:hover {
+      color: #7c7c7c; 
     }
 
     h2, h3 {
@@ -90,29 +47,91 @@ body {
       text-align: center;
     }
 
-    #contenedor-contrato {
-      display: block;
-      padding: 10px;
-      border: 1px solid #ddd;
-      margin-bottom: 10px;
-    }
+
 
     .adjuntos {
       margin-bottom: 20px;
     }
 
-    .boton-editar {
-      background-color: #0066cc;
-      color: #fff;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 16px;
-      display: block;
-      margin: 20px auto;
+    #boton-crear {
+      background-color: #003594;
+    }
+    #boton-editar {
+      background-color: #003594;
+    }
+    #boton-volver {
+      background-color: #003594;
     }
 
-    .boton-editar:hover {
-      background-color: #46a3ff;  
+    #ver-mas {
+
+      background-color: #003594;
     }
+    
+    #tabla-header {
+
+      background-color: #418FDE;
+      color: #fff;
+    }
+    #contenedor-contrato {
+      margin-left: 90px;
+      margin-right: 90px;
+      background-color: #f2f2f2; /* Color gris de fondo */
+      padding: 1rem; /* Añadir un relleno para mejorar la apariencia */
+      border: 2px grove #ddd;
+      margin-top: 100px;
+    }
+
+    .seccion-container {
+      margin-bottom: 1.5rem; /* Margen inferior de las secciones */
+      background-color: #ffffff; /* Color de fondo blanco para las secciones */
+      padding: 1rem; /* Añadir un relleno para mejorar la apariencia de las secciones */
+      border: 1px solid #ddd; 
+      border-radius: 5px; /* Agrega bordes redondeados si es necesario */
+    }
+
+    .seccion-container .row {
+      border: 1px solid #ddd;
+    }
+
+    .seccion-container .col {
+      padding: 1rem; /* Añadir relleno a cada columna */
+      border: 1px solid #fff !important;
+
+    }
+
+    #contenedor_general{
+      margin-top: 70px;
+    }
+
+    .perfil-container {
+      width: 50%;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+  }
+  
+  .perfil-info {
+      margin-bottom: 20px;
+  }
+  
+  .logout-link  {
+      display: block;
+      text-align: right;
+      color: blue;
+  }
+  .admin-link {
+    display: block;
+    text-align: left;
+    color: blue;
+}
+  
+.navbar-nav .nav-link:hover {
+  background-color: #2266cc; /* Puedes ajustar el color de fondo según tus preferencias */
+}
+
+
+.dataTables_filter {
+  display: none;
+}
