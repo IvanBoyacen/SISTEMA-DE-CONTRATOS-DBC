@@ -12,7 +12,7 @@ class PersonaForm(forms.ModelForm):
         super(PersonaForm, self).__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.helper.form_method = 'post'
-        self.helper.add_input(Submit('submit', 'Guardar'))
+        self.helper.add_input(Submit('submit', 'Crear', style='background-color: #003594;'))
         self.helper.layout = Layout(
             Fieldset(
                 'DATOS DE LA PERSONA',

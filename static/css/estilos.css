@@ -1,7 +1,5 @@
  .body {
     font-family: 'Arial', sans-serif;
-    color: #000;
-    background-color: #000;
     margin: 0;
     padding: 0;
     padding-top:0;
@@ -135,3 +133,6 @@
 .dataTables_filter {
   display: none;
 }
+
+
+

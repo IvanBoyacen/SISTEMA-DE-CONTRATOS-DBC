@@ -25,7 +25,7 @@ class ContratoForm(forms.ModelForm):
         super(ContratoForm, self).__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.helper.form_method = 'post'
-        self.helper.add_input(Submit('submit', 'Crear'))
+        self.helper.add_input(Submit('submit', 'Crear', style='background-color: #003594;'))
 
         self.helper.layout = Layout(
             Fieldset(

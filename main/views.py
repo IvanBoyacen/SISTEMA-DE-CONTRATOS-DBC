@@ -22,6 +22,8 @@ def mostrar_perfil(request):
     }
     return render(request, 'perfil/perfil.html', context)
 
+def recuperar_contrasena(request):
+    return render(request, 'registration/olvide-contraseña.html')
 
 def logout_usuario(request):
     logout(request)

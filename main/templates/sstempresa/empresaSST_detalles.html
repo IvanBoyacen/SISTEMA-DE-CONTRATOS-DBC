@@ -1,11 +1,12 @@
 {% extends 'partials/body.html' %}
 {% load static %}
+{% load crispy_forms_tags %}
+
 {% block contenido %}
 <title>DETALLES DOCUMENTO</title>
-<div class="contenedor" id="contenedor-persona">
+<div class="contenedor" id="contenedor-contrato">
   <h2>DETALLES DOCUMENTO</h2>
   <br>
-  <br><br><br><br>
   <div class="seccion-container">
     <div class="row">
       <div class="col">
@@ -13,31 +14,36 @@
         <br>
         <div class="row mb-3">
           <div class="col-md-4">
-            <label for="nombrePersona" class="form-label">ID:</label>
-            <span id="nombrePersona">{{ empresaSST.id }}</span>
+            <label for="nombreDocumento" class="form-label">ID:</label>
+            <span id="nombreDocumento">{{ empresaSST.id }}</span>
           </div>
           <div class="col-md-4">
-            <label for="nombrePersona" class="form-label">Nombre:</label>
-            <span id="nombrePersona">{{ empresaSST.nombre_documento }}</span>
+            <label for="nombreDocumento" class="form-label">Nombre:</label>
+            <span id="nombreDocumento">{{ empresaSST.nombre_documento }}</span>
           </div>
           <div class="col-md-4">
-            <label for="tipoDocumentoPersona" class="form-label">Tipo de Documento:</label>
-            <span id="tipoDocumentoPersona">{{ empresaSST.tipo_documento }}</span>
+            <label for="tipoDocumento" class="form-label">Tipo de Documento:</label>
+            <span id="tipoDocumento">{{ empresaSST.tipo_documento }}</span>
           </div>
         </div>
         <div class="row mb-3">
           <div class="col-md-4">
-            <label for="numeroDocumentoPersona" class="form-label">Documento:</label>
-            <span id="numeroDocumentoPersona">{{ empresaSST.archivo }}</span>
+            <label for="archivo" class="form-label">Documento:</label>
+            {% if empresaSST.archivo %}
+              <a href="{{ empresaSST.archivo.url }}" target="_blank" id="enlace_archivo">
+                <span>
+                  <i class="bi bi-paperclip"></i>
+                </span>
+              </a>
+            {% endif %}
           </div>
           <div class="col-md-4">
-            <label for="correoPersona" class="form-label">Creado por:</label>
-            <span id="correoPersona">{{ empresaSST.creado_por }}</span>
+            <label for="creadoPor" class="form-label">Creado por:</label>
+            <span id="creadoPor">{{ empresaSST.creado_por }}</span>
           </div>
           <div class="col-md-4">
-            <label for="celularPersona" class="form-label">Fecha de creacion:</label>
-            <span id="celularPersona">{{ empresaSST.fecha_creacion }}</span>
-          </div>
+            <label for="fechaCreacion" class="form-label">Fecha de creación:</label>
+            <span id="fechaCreacion">{{ empresaSST.fecha_creacion }}</span>
           </div>
         </div>
       </div>
@@ -46,4 +52,11 @@
   <a href="{% url 'empresaSST' %}" class="btn btn-primary" id="boton-volver">Volver</a>
   <a href="{% url 'editar_empresaSST' empresaSST.id %}" class="btn btn-primary float-end" id="boton-editar">Editar</a>
 </div>
+<script>
+  var enlaceArchivo = document.getElementById('enlace_archivo');
+  if (enlaceArchivo) {
+    var iconoClip = enlaceArchivo.querySelector('i');
+    iconoClip.title = 'Descargar archivo adjunto';
+  }
+</script>
 {% endblock contenido %}

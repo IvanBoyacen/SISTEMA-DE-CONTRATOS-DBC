@@ -18,4 +18,5 @@ urlpatterns = [
     path('sstempresa/', include('sstempresa.urls')),
     path('logout/', views.logout_usuario, name='logout'),
     path('admin/logout/', auth_views.LogoutView.as_view(template_name='admin_logout.html'), name='admin_logout'),
+    path('recuperar-contrasena/', views.recuperar_contrasena, name='recuperar_contrasena'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
