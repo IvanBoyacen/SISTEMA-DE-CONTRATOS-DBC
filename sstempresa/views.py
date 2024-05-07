@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import EmpresaSST
-from .forms import EmpresaSSTForm
+from .forms import EmpresaSSTForm, EditarEmpresaSSTForm
 from django.contrib.auth.decorators import login_required
 
 @login_required
@@ -34,11 +34,11 @@ def detalles_empresaSST(request, empresaSST_id):
 def editar_empresaSST(request, empresaSST_id):
     empresaSST = get_object_or_404(EmpresaSST, id=empresaSST_id)
     if request.method == 'POST':
-        form = EmpresaSSTForm(request.POST, instance=empresaSST)
+        form = EditarEmpresaSSTForm(request.POST, instance=empresaSST)
         if form.is_valid():
             form.save()
             return redirect('detalles_empresaSST', empresaSST_id=empresaSST.id)
     else:
-        form = EmpresaSSTForm(instance=empresaSST)
+        form = EditarEmpresaSSTForm(instance=empresaSST)
 
     return render(request, 'sstempresa/editar_empresaSST.html', {'form': form, 'empresaSST': empresaSST})

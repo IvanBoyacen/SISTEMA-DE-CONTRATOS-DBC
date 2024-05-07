@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import PersonasSST
-from .forms import PersonasSSTForm
+from .forms import PersonasSSTForm, EditarPersonasSSTForm
 from django.contrib.auth.decorators import login_required
 
 @login_required
@@ -30,15 +30,16 @@ def detalles_personaSST(request, personaSST_id):
     personaSST = get_object_or_404(PersonasSST, id=personaSST_id)
     return render(request, 'sstpersonas/personasSST_detalles.html', {'personaSST': personaSST})
 
+
 @login_required
 def editar_personaSST(request, personaSST_id):
     personaSST = get_object_or_404(PersonasSST, id=personaSST_id)
     if request.method == 'POST':
-        form = PersonasSSTForm(request.POST, instance=personaSST)
+        form = EditarPersonasSSTForm(request.POST, instance=personaSST)
         if form.is_valid():
             form.save()
             return redirect('detalles_personaSST', personaSST_id=personaSST.id)
     else:
-        form = PersonasSSTForm(instance=personaSST)
+        form = EditarPersonasSSTForm(instance=personaSST)
 
-    return render(request, 'sstpersonas/editar_personaSST.html', {'form': form, 'personaSST': personaSST})
+    return render(request, 'sstpersonas/personasSST_editar.html', {'form': form, 'personaSST': personaSST})

@@ -2,28 +2,17 @@
 {% load static %}
 {% load crispy_forms_tags %}
 
-
 {% block contenido %}
 
 <title>PERSONAS</title>
-<br>
-<br>
-<br>
-<br>
-  <div class="contenedor" id="contenedor-persona">
-    <h2>EDITAR PERSONA</h2>
+
+<div class="contenedor" id="contenedor-contrato">
+  <h2>EDITAR PERSONA</h2>
     <br>
 
     <form method="post">
       {% csrf_token %}
-      {{ form|crispy }}
-
-      <div class="row mb-3">
-        <div class="col-md-12 text-center">
-          <a href="{% url 'detalles_persona' persona.id %}" class="btn btn-secondary">Cancelar</a>
-          <button type="submit" class="btn btn-primary">Guardar Cambios</button>
-        </div>
-      </div>
+      {% crispy form %}
     </form>
   </div>
 {% endblock contenido %}
