@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.shortcuts import redirect
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
-
+from django.contrib.auth.views import LogoutView
 
 
 @login_required
@@ -28,4 +28,6 @@ def recuperar_contrasena(request):
 def logout_usuario(request):
     logout(request)
     return redirect('login')
+class CustomLogoutView(LogoutView):
+    next_page = '/accounts/login/'
 

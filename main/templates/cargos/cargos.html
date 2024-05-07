@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block contenido %}
-<title>CARGOS</title>
+<title>POSICIONES</title>
 
 <br>
 <br>
@@ -12,16 +12,16 @@
     <div class="col-12">
       <br>
       <div class="d-flex justify-content-between align-items-center mb-3">
-        <h2>Cargos</h2>
-        <a href="{% url 'crear_cargo' %}" class="btn btn-primary float-end" id="boton-crear">Crear Cargo</a>
+        <h2>Posición</h2>
+        <a href="{% url 'crear_cargo' %}" class="btn btn-primary float-end" id="boton-crear">Crear Posición</a>
       </div>
     </div>
     <div class="col-12">
       <div class="form-group row">
         <div class="col-md-6">
           <select id="filtroCampo" class="form-select">
-            <option value="0">ID del Cargo</option>
-            <option value="1">Nombre del Cargo</option>
+            <option value="0">ID de la Posición</option>
+            <option value="1">Nombre de la Posición</option>
             <option value="2">Área</option>
             <option value="3">Fecha de Creación</option>
           </select>
@@ -37,8 +37,8 @@
       <table class="table table-striped table-hover table-bordered border-secondary table align-middle" id="tblcargos">  
         <thead class="thead-dark align-middle">
           <tr id="tabla-header">
-            <th scope="col" class="text-center">ID del Cargo</th>
-            <th scope="col" class="text-center">Nombre del Cargo</th>
+            <th scope="col" class="text-center">ID de la Posición</th>
+            <th scope="col" class="text-center">Nombre de la Posición</th>
             <th scope="col" class="text-center">Área</th>
             <th scope="col" class="text-center">Fecha de Creación</th>
             <th scope="col" class="text-center">Detalles</th>

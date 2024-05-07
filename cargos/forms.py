@@ -10,6 +10,7 @@ class CargoForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(CargoForm, self).__init__(*args, **kwargs)
+        self.fields['nombre_cargo'].label = 'Nombre Posición'
         self.helper = FormHelper()
         self.helper.form_method = 'post'
         self.helper.add_input(Submit('submit', 'Crear', style='background-color: #003594;'))
@@ -31,6 +32,7 @@ class CargoEditForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(CargoEditForm, self).__init__(*args, **kwargs)
+        self.fields['nombre_cargo'].label = 'Nombre Posición'
         self.helper = FormHelper()
         self.helper.form_method = 'post'
         self.helper.add_input(Submit('submit', 'Guardar cambios', style='background-color: #003594;'))
