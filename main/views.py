@@ -28,6 +28,4 @@ def recuperar_contrasena(request):
 def logout_usuario(request):
     logout(request)
     return redirect('login')
-class CustomLogoutView(LogoutView):
-    next_page = '/accounts/login/'
 

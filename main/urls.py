@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
-from main.views import principal, mostrar_perfil, CustomLogoutView
+from main.views import principal, mostrar_perfil
 from . import views
 from django.contrib.auth import views as auth_views
 from django.conf import settings
@@ -18,6 +18,5 @@ urlpatterns = [
     path('sstpersonas/', include('sstpersonas.urls')),
     path('sstempresa/', include('sstempresa.urls')),
     path('logout/', views.logout_usuario, name='logout'),
-    path('accounts/logout/', CustomLogoutView.as_view(), name='logout'),
     path('recuperar-contrasena/', views.recuperar_contrasena, name='recuperar_contrasena'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
