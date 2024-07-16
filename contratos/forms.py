@@ -19,13 +19,25 @@ class ContratoForm(forms.ModelForm):
     class Meta:
         model = Contrato
         fields = '__all__'
-        exclude = ['fecha_creacion_contrato', 'fecha_carga_adjunto_contrato', 'fecha_carga_adjunto_preaviso']
+        exclude = ['fecha_creacion_contrato', 'fecha_carga_adjunto_contrato']
 
     def __init__(self, *args, **kwargs):
         super(ContratoForm, self).__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.helper.form_method = 'post'
         self.helper.add_input(Submit('submit', 'Crear', style='background-color: #003594;'))
+
+        self.fields['razón_social'].widget.attrs['readonly'] = True
+        self.fields['nit_empresa'].widget.attrs['readonly'] = True
+        self.fields['ubicacion'].widget.attrs['readonly'] = True
+        self.fields['direccion_notificacion_judicial'].widget.attrs['readonly'] = True
+        self.fields['nombre_representante_legal'].widget.attrs['readonly'] = True
+        self.fields['cargo_representante_legal'].widget.attrs['readonly'] = True
+        self.fields['tipo_doc_representante_legal'].widget.attrs['readonly'] = True
+        self.fields['numero_doc_representante_legal'].widget.attrs['readonly'] = True
+        self.fields['lugar_expedicion_doc_representante_legal'].widget.attrs['readonly'] = True
+        self.fields['correo_representante_legal'].widget.attrs['readonly'] = True
+        self.fields['celular_representante_legal'].widget.attrs['readonly'] = True
 
         self.helper.layout = Layout(
             Fieldset(
@@ -79,14 +91,8 @@ class ContratoForm(forms.ModelForm):
                 'adjunto_contrato',
                 css_class='seccion-container adjuntos'
             ),
-            Fieldset(
-                'PRE-AVISO',
-                'adjunto_preaviso',
-                css_class='seccion-container adjuntos'
-            ),
             Row(
                 Column('fecha_carga_adjunto_contrato', css_class='form-group col-md-4 mb-3', style="display:none;"),
-                Column('fecha_carga_adjunto_preaviso', css_class='form-group col-md-4 mb-3', style="display:none;"),
             )
         )
         self.fields['fecha_inicio'].widget.attrs['class'] = 'datepicker'
@@ -109,6 +115,19 @@ class ContratoEditForm(forms.ModelForm):
         self.helper = FormHelper()
         self.helper.form_method = 'post'
         self.helper.add_input(Submit('submit', 'Guardar cambios'))
+        
+        self.fields['razón_social'].widget.attrs['readonly'] = True
+        self.fields['nit_empresa'].widget.attrs['readonly'] = True
+        self.fields['ubicacion'].widget.attrs['readonly'] = True
+        self.fields['direccion_notificacion_judicial'].widget.attrs['readonly'] = True
+        self.fields['nombre_representante_legal'].widget.attrs['readonly'] = True
+        self.fields['cargo_representante_legal'].widget.attrs['readonly'] = True
+        self.fields['tipo_doc_representante_legal'].widget.attrs['readonly'] = True
+        self.fields['numero_doc_representante_legal'].widget.attrs['readonly'] = True
+        self.fields['lugar_expedicion_doc_representante_legal'].widget.attrs['readonly'] = True
+        self.fields['correo_representante_legal'].widget.attrs['readonly'] = True
+        self.fields['celular_representante_legal'].widget.attrs['readonly'] = True
+
         self.helper.layout = Layout(
             Fieldset(
                 'DATOS DE LA EMPRESA',
@@ -168,7 +187,6 @@ class ContratoEditForm(forms.ModelForm):
             ),
                 Row(
                     Column('fecha_carga_adjunto_contrato', css_class='form-group col-md-4 mb-3', style="display:none;"),
-                    Column('fecha_carga_adjunto_preaviso', css_class='form-group col-md-4 mb-3', style="display:none;"),
                 )
             )
         self.fields['fecha_inicio'].widget.attrs['class'] = 'datepicker'

@@ -7,4 +7,3 @@ urlpatterns = [
     path('personas/<int:id>/editar/', editar_persona, name='editar_persona'),
     path('personas/crear/', crear_persona, name="crear_persona"),
 ]
-

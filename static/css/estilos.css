@@ -53,6 +53,7 @@
 
     #boton-crear {
       background-color: #003594;
+      margin-right: 10px;
     }
     #boton-editar {
       background-color: #003594;
@@ -64,6 +65,10 @@
     #ver-mas {
 
       background-color: #003594;
+    }
+    #boton-exportar {
+      background-color: #003594;
+      margin-left: 10px;
     }
     
     #tabla-header {
@@ -133,6 +138,7 @@
 .dataTables_filter {
   display: none;
 }
+
 
 
 

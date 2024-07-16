@@ -4,6 +4,8 @@ from crispy_forms.layout import Layout, Fieldset, Row, Column, Submit
 from .models import Cargo
 
 class CargoForm(forms.ModelForm):
+    area = forms.CharField(label='Área')
+
     class Meta:
         model = Cargo
         fields = '__all__'
@@ -26,6 +28,9 @@ class CargoForm(forms.ModelForm):
         )
 
 class CargoEditForm(forms.ModelForm):
+    area = forms.CharField(label='Área')
+
+
     class Meta:
         model = Cargo
         fields = '__all__'

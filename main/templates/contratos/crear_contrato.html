@@ -4,7 +4,10 @@
 
 {% block contenido %}
   <title>CREAR CONTRATO</title>
+<style>
 
+  
+</style>
   <div class="contenedor" id="contenedor-contrato">
     <h2>CONTRATO</h2>
     <br>
@@ -12,12 +15,11 @@
     <!-- Formulario de Contrato -->
     <form method="post" action="{% url 'crear_contrato' %}" enctype="multipart/form-data">
       {% csrf_token %}
-      {% crispy form %}
+      {% crispy form %}  
     </form>
   </div>
   <br>
   <br>
-  <!-- En tu plantilla HTML -->
 {% block scripts %}
 {{ block.super }}
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

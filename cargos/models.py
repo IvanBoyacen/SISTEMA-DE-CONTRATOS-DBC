@@ -7,3 +7,5 @@ class Cargo(models.Model):
 
     def __str__(self):
         return self.nombre_cargo
+
+

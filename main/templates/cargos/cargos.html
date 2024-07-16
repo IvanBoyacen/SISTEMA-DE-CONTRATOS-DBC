@@ -18,7 +18,7 @@
     </div>
     <div class="col-12">
       <div class="form-group row">
-        <div class="col-md-6">
+        <div class="col-md-2">
           <select id="filtroCampo" class="form-select">
             <option value="0">ID de la Posición</option>
             <option value="1">Nombre de la Posición</option>
@@ -26,7 +26,7 @@
             <option value="3">Fecha de Creación</option>
           </select>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-2">
           <input type="text" id="busqueda" class="form-control" placeholder="Buscar...">
         </div>
       </div>
@@ -47,10 +47,10 @@
         <tbody>
           {% for cargo in cargos %}
           <tr>
-            <td>{{ cargo.id }}</td>
-            <td>{{ cargo.nombre_cargo }}</td>
-            <td>{{ cargo.area }}</td>
-            <td>{{ cargo.fecha_creacion }}</td>
+            <td class="text-center">{{ cargo.id }}</td>
+            <td class="text-center">{{ cargo.nombre_cargo }}</td>
+            <td class="text-center">{{ cargo.area }}</td>
+            <td class="text-center">{{ cargo.fecha_creacion }}</td>
             <td class="text-center">
               <a href="{% url 'detalles_cargo' cargo.id %}" class="btn btn-success" id="ver-mas">Ver Detalles</a>
             </td>

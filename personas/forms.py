@@ -4,6 +4,13 @@ from crispy_forms.layout import Layout, Fieldset, Row, Column, Submit
 from .models import Persona
 
 class PersonaForm(forms.ModelForm):
+    nombre_persona = forms.CharField(label='Nombre Completo')
+    tipo_documento_persona = forms.CharField(label='Tipo de Documento', widget=forms.Select(choices=Persona.TIPO_DOCUMENTO_CHOICES))
+    numero_documento_persona = forms.CharField(label='Número de Documento')
+    correo_persona = forms.EmailField(label='Correo Electrónico')
+    celular_persona = forms.CharField(label='Celular')
+    direccion_residencia_persona = forms.CharField(label='Dirección de Residencia')
+
     class Meta:
         model = Persona
         fields = '__all__'
@@ -29,8 +36,15 @@ class PersonaForm(forms.ModelForm):
                 css_class='seccion-container'
             ),
         )
-        
+
 class PersonaEditForm(forms.ModelForm):
+    nombre_persona = forms.CharField(label='Nombre Completo')
+    tipo_documento_persona = forms.CharField(label='Tipo de Documento', widget=forms.Select(choices=Persona.TIPO_DOCUMENTO_CHOICES))
+    numero_documento_persona = forms.CharField(label='Número de Documento')
+    correo_persona = forms.EmailField(label='Correo Electrónico')
+    celular_persona = forms.CharField(label='Celular')
+    direccion_residencia_persona = forms.CharField(label='Dirección de Residencia')
+
     class Meta:
         model = Persona
         fields = '__all__'
