@@ -3,7 +3,7 @@
 {% load crispy_forms_tags %}
 
 {% block contenido %}
-  <title>CONTRATO</title>
+  <title>CONTRATO DETALLES</title>
 
   <div class="contenedor" id="contenedor-contrato">
     <h2>CONTRATO</h2>
@@ -25,22 +25,22 @@
                 <span id="nit_empresa">{{ contrato.nit_empresa }}</span>
               </div>
               <div class="col-md-4">
-                <label for="ubicacion" class="form-label">Ubicacion:</label>
+                <label for="ubicacion" class="form-label">Ubicación:</label>
                 <span id="ubicacion">{{ contrato.ubicacion }}</span>
               </div>
             </div>
 
             <div class="row mb-3">
               <div class="col-md-4">
-                <label for="direccion_notificacion_judicial" class="form-label">Direccion para notificacion judicial:</label>
+                <label for="direccion_notificacion_judicial" class="form-label">Dirección para notificación judicial:</label>
                 <span id="direccion_notificacion_judicial">{{ contrato.direccion_notificacion_judicial }}</span>
               </div>
               <div class="col-md-4">
-                <label for="nombre_representante" class="form-label">Nombre completo representante:</label>
+                <label for="nombre_representante" class="form-label">Nombre completo del representante:</label>
                 <span id="nombre_representante">{{ contrato.nombre_representante_legal }}</span>
               </div>
               <div class="col-md-4">
-                <label for="cargo_representante" class="form-label">Cargo representante legal:</label>
+                <label for="cargo_representante" class="form-label">Cargo del representante legal:</label>
                 <span id="cargo_representante">{{ contrato.cargo_representante_legal }}</span>
               </div>
             </div>
@@ -52,10 +52,10 @@
               </div>
               <div class="col-md-4">
                 <label for="numero_documento_representante_legal" class="form-label">Documento de identidad:</label>
-                <span id="numero_documento_representante_legalr">{{ contrato.numero_doc_representante_legal }}</span>
+                <span id="numero_documento_representante_legal">{{ contrato.numero_doc_representante_legal }}</span>
               </div>
               <div class="col-md-4">
-                <label for="lugar_expedicion_documento_representante_legal" class="form-label">Lugar expedición documento:</label>
+                <label for="lugar_expedicion_documento_representante_legal" class="form-label">Lugar de expedición del documento:</label>
                 <span id="lugar_expedicion_documento_representante_legal">{{ contrato.lugar_expedicion_doc_representante_legal }}</span>
               </div>  
             </div>
@@ -66,7 +66,7 @@
                 <span id="correo_electronico_empleador">{{ contrato.correo_representante_legal }}</span>
               </div>
               <div class="col-md-4">
-                <label for="celular_empleador" class="form-label">Celular representante legal:</label>
+                <label for="celular_empleador" class="form-label">Celular del representante legal:</label>
                 <span id="celular_empleador">{{ contrato.celular_representante_legal }}</span>
               </div>
             </div>
@@ -107,7 +107,7 @@
         </div>
         <div class="col-md-4">
           <label for="direccion_residencia_empleado" class="form-label">Dirección de residencia:</label>
-          <span id="direccion_residencia_empleado">{{ contrato.empleado.direccion_residencia_persona}}</span>
+          <span id="direccion_residencia_empleado">{{ contrato.empleado.direccion_residencia_persona }}</span>
         </div>
       </div>
     </div>
@@ -139,7 +139,7 @@
             <div class="row mb-3">
 
               <div class="col-md-4">
-                <label for="fecha_inicio" class="form-label">Fecha de iniciación de labores:</label>
+                <label for="fecha_inicio" class="form-label">Fecha de inicio de labores:</label>
                 <span id="fecha_inicio">{{ contrato.fecha_inicio }}</span>
               </div>
               <div class="col-md-4">
@@ -147,7 +147,7 @@
                 <span id="fecha_terminacion">{{ contrato.fecha_terminacion }}</span>
               </div>
               <div class="col-md-4">
-                <label for="fecha_pre_aviso" class="form-label">Fecha de pre-aviso:</label>
+                <label for="fecha_pre_aviso" class="form-label">Fecha de preaviso:</label>
                 <span id="fecha_pre_aviso">{{ contrato.fecha_pre_aviso }}</span>
               </div>
             </div>
@@ -168,9 +168,18 @@
             </div>
             <div class="row mb-3">
               <div class="col-md-4">
-                <label for="fecha_creacion_contrato" class="form-label">Fecha de creacion del contrato:</label>
+                <label for="fecha_creacion_contrato" class="form-label">Fecha de creación del contrato:</label>
                 <span id="fecha_creacion_contrato">{{ contrato.fecha_creacion_contrato }}</span>
               </div>
+              <div class="col-md-4">
+                <label for="fecha_creacion_contrato" class="form-label"># Contrato Vigente</label>
+                <span id="fecha_creacion_contrato">{{ contrato.consecutivo }}</span>
+              </div>
+              <div class="col-md-4">
+                <label for="fecha_creacion_contrato" class="form-label">Dias Restantes</label>
+                <span id="fecha_creacion_contrato">{{ contrato.dias_restantes }}</span>
+              </div>
+
             </div>
           </form>
         </div>
@@ -190,7 +199,7 @@
           </a>
         </div>
         <div class="col-md-4">
-          <label for="fecha_carga_adjunto" class="form-label">Fecha de Carga:</label>
+          <label for="fecha_carga_adjunto" class="form-label">Fecha de carga:</label>
           <span id="fecha_carga_adjunto">{{ contrato.fecha_carga_adjunto_contrato }}</span>
         </div>
       </div>
@@ -208,9 +217,9 @@
     
     <br>
 
-<!-- ADJUNTOS PRE AVISO -->
+<!-- ADJUNTOS PREAVISO -->
 <div class="seccion-container adjuntos">
-  <h3>PRE-AVISO</h3>
+  <h3>PREAVISO</h3>
   <br>
   <div class="row mb-3">
     <div class="col-md-4">
@@ -226,10 +235,6 @@
         No hay preaviso adjunto.
       </span>
       {% endif %}
-    </div>
-    <div class="col-md-4">
-      <label for="fecha_carga_adjunto_preaviso" class="form-label">Fecha de Carga:</label>
-      <span id="fecha_carga_adjunto_preaviso">{{ contrato.fecha_carga_adjunto_preaviso }}</span>
     </div>
   </div>
 </div>
@@ -250,5 +255,7 @@
   <br>
   <br>
 {% endblock contenido %}
+
+
 
 

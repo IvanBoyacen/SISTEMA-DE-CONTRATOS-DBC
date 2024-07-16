@@ -5,6 +5,7 @@ from . import views
 from django.contrib.auth import views as auth_views
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.auth.views import LogoutView
 
 urlpatterns = [
     path('',auth_views.LoginView.as_view(),name='login'),
@@ -17,5 +18,5 @@ urlpatterns = [
     path('sstpersonas/', include('sstpersonas.urls')),
     path('sstempresa/', include('sstempresa.urls')),
     path('logout/', views.logout_usuario, name='logout'),
-    path('admin/logout/', auth_views.LogoutView.as_view(template_name='admin_logout.html'), name='admin_logout'),
+    path('recuperar-contrasena/', views.recuperar_contrasena, name='recuperar_contrasena'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

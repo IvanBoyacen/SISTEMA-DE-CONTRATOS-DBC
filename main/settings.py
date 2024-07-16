@@ -163,3 +163,5 @@ LOGIN_REDIRECT_URL= reverse_lazy ('principal')
 
 #SESSION_COOKIE_AGE = 600    
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+
+LOGOUT_REDIRECT_URL = 'admin:index'

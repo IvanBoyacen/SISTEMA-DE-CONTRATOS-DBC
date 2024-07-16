@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Cargo
-from .forms import CargoForm
+from .forms import CargoForm, CargoEditForm
 from django.contrib.auth.decorators import login_required
 
 @login_required
@@ -31,12 +31,11 @@ def detalles_cargo(request, cargo_id):
 def editar_cargo(request, cargo_id):
     cargo = get_object_or_404(Cargo, id=cargo_id)
     if request.method == 'POST':
-        form = CargoForm(request.POST, instance=cargo)
+        form = CargoEditForm(request.POST, instance=cargo)
         if form.is_valid():
             form.save()
             return redirect('detalles_cargo', cargo_id=cargo.id)
     else:
-        form = CargoForm(instance=cargo)
+        form = CargoEditForm(instance=cargo)
 
     return render(request, 'cargos/editar_cargo.html', {'form': form, 'cargo': cargo})
-

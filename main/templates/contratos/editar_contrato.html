@@ -3,15 +3,9 @@
 {% load crispy_forms_tags %}
 
 {% block contenido %}
-  <title>CONTRATO</title>
-
-  <br>
-  <br>
-  <br>
-  <br>
     <title>EDITAR CONTRATO</title>
   
-    <div class="contenedor" id="contenedor-cargo">
+    <div class="contenedor" id="contenedor-contrato">
       <h2>EDITAR CONTRATO</h2>
   
       <form method="post" action="{% url 'editar_contrato' contrato.id %}" enctype="multipart/form-data">

@@ -4,7 +4,6 @@
 {% block contenido %}
 <title>PERSONAS</title>
 
-
 <br>
 <br>
 <br>
@@ -21,27 +20,29 @@
 
       <div class="col-12">
         <div class="form-group row">
-          <div class="col-md-6">
+          <div class="col-md-2">
             <select id="filtroCampo" class="form-select">
-              <option value="0">Nombre</option>
-              <option value="1">Tipo de Documento</option>
-              <option value="2">Número de Documento</option>
-              <option value="3">Correo Electrónico</option>
-              <option value="4">Celular</option>
-              <option value="5">Dirección de Residencia</option>
+              <option value="0">ID</option>
+              <option value="1">Nombre</option>
+              <option value="2">Tipo de Documento</option>
+              <option value="3">Número de Documento</option>
+              <option value="4">Correo Electrónico</option>
+              <option value="5">Celular</option>
+              <option value="6">Dirección de Residencia</option>
             </select>
           </div>
-          <div class="col-md-6">
+          <div class="col-md-2">
             <input type="text" id="busqueda" class="form-control" placeholder="Buscar...">
           </div>
         </div>
+        <br>
       </div>
-<br>
-<br>
-      <div class="col-12 table-responsive ">
+
+      <div class="col-12 table-responsive">
         <table class="table table-striped table-hover table-bordered border-secondary table align-middle" id="tblpersonas">  
           <thead class="thead-dark align-middle">
               <tr id="tabla-header">
+              <th scope="col" class="text-center">ID</th>
               <th scope="col" class="text-center">Nombre</th>
               <th scope="col" class="text-center">Tipo de Documento</th>
               <th scope="col" class="text-center">Número de Documento</th>
@@ -54,12 +55,13 @@
           <tbody id="tblpersonas">
             {% for persona in personas %}
             <tr>
-              <td>{{ persona.nombre_persona }}</td>
-              <td>{{ persona.get_tipo_documento_persona_display }}</td>
-              <td>{{ persona.numero_documento_persona }}</td>
-              <td>{{ persona.correo_persona }}</td>
-              <td>{{ persona.celular_persona }}</td>
-              <td>{{ persona.direccion_residencia_persona }}</td>
+              <td class="text-center">{{ persona.id }}</td>
+              <td class="text-center">{{ persona.nombre_persona }}</td>
+              <td class="text-center">{{ persona.get_tipo_documento_persona_display }}</td>
+              <td class="text-center">{{ persona.numero_documento_persona }}</td>
+              <td class="text-center">{{ persona.correo_persona }}</td>
+              <td class="text-center">{{ persona.celular_persona }}</td>
+              <td class="text-center">{{ persona.direccion_residencia_persona }}</td>
               <td>
                 <a href="{% url 'detalles_persona' persona.id %}"  class="btn btn-success" id="ver-mas">Ver Detalles</a>
               </td>
@@ -86,8 +88,8 @@
         "infoEmpty": "No hay registros disponibles",
         "infoFiltered": "(filtrado de _MAX_ registros totales)",
         "paginate": {
-          "first": "Anterior",
-          "last": "Siguiente",
+          "first": "Primero",
+          "last": "Último",
           "next": "Siguiente",
           "previous": "Anterior"
         },

@@ -4,18 +4,15 @@
 
 
 {% block contenido %}
-<br>
-<br>
-<br>
-<br>
-  <title>EDITAR CARGO</title>
 
-  <div class="contenedor" id="contenedor-cargo">
-    <h2>EDITAR CARGO</h2>
+  <title>EDITAR POSICION</title>
 
-    <form method="post" action="{% url 'editar_cargo' cargo.id %}">
+  <div class="contenedor" id="contenedor-contrato">
+    <h2>EDITAR POSICION</h2>
+
+    <form method="post">
       {% csrf_token %}
-      {{ form|crispy }}
-      <button type="submit" class="btn btn-primary">Guardar cambios </button>
+      {% crispy form %}
+    </form>
 
 {% endblock contenido %}

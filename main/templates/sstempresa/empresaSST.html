@@ -16,17 +16,16 @@
       </div>
       <div class="col-12">
         <div class="form-group row">
-          <div class="col-md-6">
+          <div class="col-md-2">
             <select id="filtroCampo" class="form-select">
               <option value="0">ID</option>
               <option value="1">Nombre Documento</option>
               <option value="2">Tipo de Documento</option>
-              <option value="4">Fecha de creacion</option>
-              <option value="5">Creado por</option>
-
+              <option value="3">Fecha de creación</option>
+              <option value="4">Creado por</option>
             </select>
           </div>
-          <div class="col-md-6">
+          <div class="col-md-2">
             <input type="text" id="busqueda" class="form-control" placeholder="Buscar...">
           </div>
         </div>
@@ -39,7 +38,7 @@
               <th scope="col" class="text-center">ID</th>
               <th scope="col" class="text-center">Nombre Documento</th>
               <th scope="col" class="text-center">Tipo de Documento</th>
-              <th scope="col" class="text-center">Fecha de creacion</th>
+              <th scope="col" class="text-center">Fecha de creación</th>
               <th scope="col" class="text-center">Creado por</th>
               <th scope="col" class="text-center">Acciones</th>
             </tr>
@@ -47,12 +46,12 @@
           <tbody>
             {% for empresaSST in empresa %}
             <tr>
-              <td>{{ empresaSST.id }}</td>
-              <td>{{ empresaSST.nombre_documento }}</td>
-              <td>{{ empresaSST.tipo_documento }}</td>
-              <td>{{ empresaSST.fecha_creacion }}</td>
-              <td>{{ empresaSST.creado_por }}</td>
-              <td>
+              <td class="text-center">{{ empresaSST.id }}</td>
+              <td class="text-center">{{ empresaSST.nombre_documento }}</td>
+              <td class="text-center">{{ empresaSST.tipo_documento }}</td>
+              <td class="text-center">{{ empresaSST.fecha_creacion }}</td>
+              <td class="text-center">{{ empresaSST.creado_por }}</td>
+              <td class="text-center">
                 <a href="{% url 'detalles_empresaSST' empresaSST.id %}" class="btn btn-success" id="ver-mas">Ver Detalles</a>
               </td>
             </tr>
@@ -78,8 +77,8 @@
         "infoEmpty": "No hay registros disponibles",
         "infoFiltered": "(filtrado de _MAX_ registros totales)",
         "paginate": {
-          "first": "Anterior",
-          "last": "Siguiente",
+          "first": "Primera",
+          "last": "Última",
           "next": "Siguiente",
           "previous": "Anterior"
         },
